@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import {State} from './Context/Context'
-import second from './'
+import Home from './Components/Home.js'
+import Navbar from './Components/Navbar';
 
 
 
@@ -10,8 +11,9 @@ const App = () => {
 
   console.log(books)
   return (
-    <div>
-
+    <div className='main'>
+      <Navbar />
+      <Home />
     </div>
   )
 }
