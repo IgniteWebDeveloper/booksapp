@@ -1,7 +1,6 @@
 import React from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import {AppBar, Box, Toolbar, IconButton, Typography, InputBase} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import Logo from './bookflixLogo.png'
 
@@ -49,7 +48,7 @@ const Navbar = () => {
       }));
   return (
     <Box sx={{ flexGrow: 1, position: 'sticky' }}>
-    <AppBar position="static">
+    <AppBar position="static" style={{backgroundColor: 'rgb(91, 167, 208)'}}>
       <Toolbar>
           <img className='logo' src={Logo} alt="" />
         <Typography
