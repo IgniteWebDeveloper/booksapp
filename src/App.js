@@ -9,7 +9,6 @@ const App = () => {
 
   const {books, setbooks} = useContext(State)
 
-  console.log(books)
   return (
     <div className='main'>
       <Navbar />
