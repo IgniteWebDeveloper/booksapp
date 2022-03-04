@@ -1,7 +1,5 @@
 import React, { Fragment, useContext } from 'react';
-import imgae from '../content.png'
 import { State } from '../Context/Context'
-import Loader from './preview.gif';
 
 
 const Home = () => {

@@ -1,14 +1,10 @@
-import React, { useContext } from 'react';
-import {State} from './Context/Context'
+import React from 'react';
 import Home from './Components/Home.js'
 import Navbar from './Components/Navbar';
 
 
 
 const App = () => {
-
-  const {books, setbooks} = useContext(State)
-
   return (
     <div className='main'>
       <Navbar />
