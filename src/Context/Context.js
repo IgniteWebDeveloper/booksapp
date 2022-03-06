@@ -6,6 +6,8 @@ export const State = createContext(null)
 
 const Context = (props) => {
     const [books, setbooks] = useState(null)
+    const [index, setindex] = useState(1)
+
     useEffect(() => {
         if (!books) {
             getBooks()
@@ -13,8 +15,10 @@ const Context = (props) => {
 
     }, [books])
 
+    console.log(books)
+
     const getBooks = () => {
-        axios.get("https://www.googleapis.com/books/v1/volumes?q=flowers&&ball+inauthor:keyes&key=AIzaSyC7YWu0a2xqKnZsRss5ouT8MIsZDQW2-8Y&startIndex=0")
+        axios.get(`https://www.googleapis.com/books/v1/volumes?q=flowers&&ball+inauthor:keyes&key=AIzaSyC7YWu0a2xqKnZsRss5ouT8MIsZDQW2-8Y&startIndex=${index}`)
             .then((response) => {
                 setbooks(response.data.items)
             })
@@ -23,7 +27,7 @@ const Context = (props) => {
             })
     }
     return (
-        <State.Provider value={{ books, setbooks }}>
+        <State.Provider value={{ books, setbooks, index, setindex }}>
             {props.children}
         </State.Provider>
     )

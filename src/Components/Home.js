@@ -1,12 +1,24 @@
 import React, { Fragment, useContext } from 'react';
-import { State } from '../Context/Context'
+import { State } from '../Context/Context';
+import axios from 'axios'
 
 
 const Home = () => {
 
-  const { books, setbooks } = useContext(State)
+  const { books, setbooks, index, setindex } = useContext(State)
 
-  console.log(books)
+  const loadmoreBooks = () => {
+    setindex(index+1)
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=flowers&&ball+inauthor:keyes&key=AIzaSyC7YWu0a2xqKnZsRss5ouT8MIsZDQW2-8Y&startIndex=${index}`)
+      .then((response) => {
+        setbooks(...books, books.push(...response.data.items))
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  console.log(books, index)
   return (
     <div className='home'>
       <div className="container">
@@ -34,7 +46,9 @@ const Home = () => {
           :
           ''
         }
-      <button className='loadMore'>Load More <i class="ri-refresh-line"></i></button>
+      </div>
+      <div className="loadmoreContainer">
+        <button className='loadMore' onClick={loadmoreBooks}>Load More <i class="ri-refresh-line"></i></button>
       </div>
     </div>
   )
