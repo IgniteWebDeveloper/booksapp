@@ -1,6 +1,7 @@
 import React, { Fragment, useContext } from 'react';
 import { State } from '../Context/Context';
 import axios from 'axios'
+import { Zoom } from '@material-ui/core';
 
 
 const Home = () => {
@@ -11,7 +12,11 @@ const Home = () => {
     setindex(index+1)
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=flowers&&ball+inauthor:keyes&key=AIzaSyC7YWu0a2xqKnZsRss5ouT8MIsZDQW2-8Y&startIndex=${index}`)
       .then((response) => {
-        setbooks(...books, books.push(...response.data.items))
+        response.data.items.map((e) =>{
+          const copyData = [...books]
+          copyData.push(e)
+          setbooks(copyData)
+        })
       })
       .catch((err) => {
         console.log(err)
